@@ -52,7 +52,7 @@ class Registro : AppCompatActivity() {
          } else {
              progressDialog.show()
              val request: StringRequest = object : StringRequest(
-                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/init.php",
+                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/registro.php",
                  Response.Listener { response ->
                      if (response.equals("registro realizado correctamente", ignoreCase = true)) {
                          Toast.makeText(this@Registro, "Datos insertados", Toast.LENGTH_SHORT)
@@ -77,7 +77,7 @@ class Registro : AppCompatActivity() {
                  @Throws(AuthFailureError::class)
                  override fun getParams(): Map<String, String>? {
                      val params: MutableMap<String, String> = HashMap()
-                     params["nombre"] = Stringnombre
+                     params["user"] = Stringnombre
                      params["email"] = Stringemail
                      params["password"] = Stringpass
 
