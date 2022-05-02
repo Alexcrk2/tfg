@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cornerRadius="20dp"
-                android:onClick="Alregistro"
+                android:onClick="irAlRegistro"
                 android:text="Registarse" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
