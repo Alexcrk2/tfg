@@ -48,6 +48,8 @@ class Login : AppCompatActivity() {
                      if (response.equals("iniciando sesión...", ignoreCase = true)) {
                          email.setText("")
                          password.setText("")
+                         progressDialog.dismiss()
+
                          val irAlmenu = Intent(this, menu::class.java).apply {
                          }
                          startActivity(irAlmenu)
