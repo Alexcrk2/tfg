@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/drawable/cuadrado.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_delete_data.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_detalles.xml" value="0.20878623188405798" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_editar.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_menu.xml" value="0.10833333333333334" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_menu.xml" value="0.4" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_pantalla2.xml" value="0.35661218424962854" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_registro.xml" value="0.264" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/list_usuarios.xml" value="0.2" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/register.xml" value="0.1" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/splash.xml" value="0.25" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

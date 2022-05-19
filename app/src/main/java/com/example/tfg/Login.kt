@@ -38,14 +38,14 @@ class Login : AppCompatActivity() {
             email.error = "Campo email vacio"
             return
         } else if (Stringpass.isEmpty()) {
-            password.error = "Campo passwors vacio"
+            password.error = "Campo password vacio"
 
         }else {
              progressDialog.show()
              val request: StringRequest = object : StringRequest(
                  Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
                  Response.Listener { response ->
-                     if (response.equals("iniciando sesión...", ignoreCase = true)) {
+                     if (!response.isEmpty()) {
                          email.setText("")
                          password.setText("")
                          progressDialog.dismiss()
@@ -53,6 +53,11 @@ class Login : AppCompatActivity() {
                          val irAlmenu = Intent(this, menu::class.java).apply {
                          }
                          startActivity(irAlmenu)
+
+                         val intent = Intent(this, menu::class.java)
+                         intent.putExtra("id", Stringemail)
+                         startActivity(intent)
+
                      } else {
                          Toast.makeText(this, response, Toast.LENGTH_SHORT).show()
                          progressDialog.dismiss()

@@ -13,6 +13,20 @@
         android:theme="@style/Theme.Tfg"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".detalles"
+            android:exported="true" />
+        <activity
+            android:name=".editar"
+            android:exported="true" />
+        <activity
+            android:name=".agregar"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
+
+        <activity
             android:name=".menu"
             android:exported="true" />
         <activity
