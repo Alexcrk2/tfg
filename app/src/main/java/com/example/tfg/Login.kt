@@ -42,8 +42,7 @@ class Login : AppCompatActivity() {
 
         }else {
              progressDialog.show()
-             val request: StringRequest = object : StringRequest(
-                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
+             val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
                  Response.Listener { response ->
                      if (!response.isEmpty()) {
                          email.setText("")

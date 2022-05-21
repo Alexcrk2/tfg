@@ -13,6 +13,11 @@
         android:theme="@style/Theme.Tfg"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".navigation"
+            android:exported="true"
+            android:label="@string/title_activity_navigation" />
+        
+        <activity
             android:name=".detalles"
             android:exported="true" />
         <activity
@@ -24,8 +29,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-
-
         <activity
             android:name=".menu"
             android:exported="true" />

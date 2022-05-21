@@ -72,11 +72,11 @@
 
             <Button
                 android:id="@+id/buttonL1"
-                android:layout_marginTop="15dp"
-                app:cornerRadius="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:layout_marginTop="15dp"
+                android:text="Iniciar sesión"
+                app:cornerRadius="20dp" />
 
             <Button
                 android:id="@+id/buttonL2"
