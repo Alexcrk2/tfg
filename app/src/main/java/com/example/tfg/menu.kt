@@ -11,6 +11,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
+import org.json.JSONObject
 import java.util.HashMap
 
 class menu : AppCompatActivity() {
@@ -20,7 +21,10 @@ class menu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
-
+        val txtid = findViewById<TextView>(R.id.textViewID)
+        val txtuser = findViewById<TextView>(R.id.textViewUser)
+        val txtemail = findViewById<TextView>(R.id.textViewEmail)
+        val txtpass = findViewById<TextView>(R.id.textViewPassword)
 
         //  val mostrardatos = findViewById<TextView>(R.id.extra)
         //  var datos = intent.extras!!
@@ -43,17 +47,44 @@ class menu : AppCompatActivity() {
         recogerYMostrar()
     }
     fun recogerYMostrar(){
+
+        val txvtid = findViewById<TextView>(R.id.textViewID)
+        val txvuser = findViewById<TextView>(R.id.textViewUser)
+        val txvemail = findViewById<TextView>(R.id.textViewEmail)
+        val txvpass = findViewById<TextView>(R.id.textViewPassword)
+
         val tvresultado = findViewById<TextView>(R.id.resultado)
         var datos = intent.extras!!
         val datosobtenidos = datos.getString("id")
         val email =datosobtenidos.toString()
         val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/traerUser.php",
-            Response.Listener { response ->val jsonArray = JSONArray(response)
+            Response.Listener { response ->//val jsonArray = JSONArray(response)
 
                 if (!response.isEmpty()) {
+                    val textview1= findViewById<TextView>(R.id.textViewID)
 
-                    val jsonObject = jsonArray[0]
-                    tvresultado.text = jsonObject.toString()
+                    val jsonArray = JSONArray(response)
+                    //val jsonObject = jsonArray[0]
+                    for(i in 0 until jsonArray.length()){
+                        val jsonObject = JSONObject(jsonArray.getString(i))
+                        var text1 = jsonObject.get("id")
+                        var text2 = jsonObject.get("user")
+                        var text3 = jsonObject.get("email")
+                        var text4 = jsonObject.get("password")
+                        val id = text1.toString()
+                        val user = text2.toString()
+                        val email = text3.toString()
+                        val pass = text4.toString()
+                        txvtid.text = id
+                        txvuser.text = user
+                        txvemail.text = email
+                        txvpass.text = pass
+
+
+
+
+                    }
+
                     Toast.makeText(this, "LETS GOOOO", Toast.LENGTH_SHORT)
                         .show()
 
