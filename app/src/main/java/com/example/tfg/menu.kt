@@ -52,9 +52,10 @@ class menu : AppCompatActivity() {
         val txvuser = findViewById<TextView>(R.id.textViewUser)
         val txvemail = findViewById<TextView>(R.id.textViewEmail)
         val txvpass = findViewById<TextView>(R.id.textViewPassword)
+        val friend = findViewById<TextView>(R.id.userfriend)
 
-        val tvresultado = findViewById<TextView>(R.id.resultado)
-        var datos = intent.extras!!
+        //val tvresultado = findViewById<TextView>(R.id.resultado)
+        val datos = intent.extras!!
         val datosobtenidos = datos.getString("id")
         val email =datosobtenidos.toString()
         val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/traerUser.php",
@@ -80,19 +81,21 @@ class menu : AppCompatActivity() {
                         txvemail.text = email
                         txvpass.text = pass
 
+                        friend.setText("Tu ID para añadir amigos es: " + user +"#"+id)
+
 
 
 
                     }
 
-                    Toast.makeText(this, "LETS GOOOO", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT)
                         .show()
 
 
 
                 } else {
 
-                    Toast.makeText(this, "RIPAZO BROOO", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "No se pudo cargar los datos del usuario ", Toast.LENGTH_SHORT)
                         .show()
 
 

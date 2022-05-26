@@ -49,11 +49,15 @@ class Login : AppCompatActivity() {
                          password.setText("")
                          progressDialog.dismiss()
 
-                         val irAlmenu = Intent(this, menu::class.java).apply {
+                       //  supportFragmentManager.beginTransaction()
+                       //      .replace(R.id.container, BlankFragment )
+                       //      .commit()
+
+                         val irAlmenu = Intent(this, navigation::class.java).apply {
                          }
                          startActivity(irAlmenu)
 
-                         val intent = Intent(this, menu::class.java)
+                         val intent = Intent(this, navigation::class.java)
                          intent.putExtra("id", Stringemail)
                          startActivity(intent)
 

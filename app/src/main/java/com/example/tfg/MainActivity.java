@@ -4,12 +4,17 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,20 +31,29 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText buscar;
     ListView listView;
     Adapter adapter;
+    SearchView searchView;
     public static ArrayList<Usuarios>usuariosArrayList=new ArrayList<>();
     String url="https://homoiothermal-dears.000webhostapp.com/phpFiles/list.php";
     Usuarios usuarios;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        adapter=new Adapter(this,usuariosArrayList);
+
+        ListarDatos(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //searchView=findViewById(R.id.barraBusqueda);
         listView=findViewById(R.id.listMostrar);
-        adapter=new Adapter(this,usuariosArrayList);
+
         listView.setAdapter(adapter);
 
+
+        //este listView.setOnItemClickListener(new AdapterView.OnItemClickListener() permite que cuando le demos a un elemento de la lista pase algo
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -75,9 +89,12 @@ public class MainActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
-        ListarDatos();
+
+        ListarDatos(this);
+
+
     }
-    private void ListarDatos(){
+    private void ListarDatos(Context context){
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -97,11 +114,37 @@ public class MainActivity extends AppCompatActivity {
                             String password = object.getString("password");
                             usuarios = new Usuarios(id, user, email, password);
                             usuariosArrayList.add(usuarios);
-                            adapter.notifyDataSetChanged();
+
 
                         }
+                        adapter=new Adapter(context,usuariosArrayList);
 
+                        //la busqueda de mierda, ver.
+                        buscar = findViewById(R.id.buscar);
+                        buscar.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i0, int i2) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence , int i, int i0, int i2) {
+                                adapter.filtrar(buscar.getText().toString()) ;
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable editable) {
+                                //adapter.filtrar(buscar.getText().toString());
+                                adapter.filtrar(buscar.getText().toString()) ;
+                                adapter.notifyDataSetChanged();
+
+                            }
+                        });
+                        adapter.notifyDataSetChanged();
                     }
+
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -120,5 +163,6 @@ public class MainActivity extends AppCompatActivity {
     public void volver(View view) {
         startActivity(new Intent(getApplicationContext(),menu.class));
     }
+
 
 }
