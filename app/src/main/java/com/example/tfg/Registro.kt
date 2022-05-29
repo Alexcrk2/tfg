@@ -1,12 +1,15 @@
 package com.example.tfg
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
@@ -20,12 +23,18 @@ class Registro : AppCompatActivity() {
         setContentView(R.layout.activity_registro)
 
         val registerButton : Button = findViewById(R.id.buttonR1)
-
+        // val ImageView = findViewById<ImageView>(R.id.imageView)
         registerButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 registro()
             }
        })
+        val botonFoto : Button = findViewById(R.id.agregarfoto)
+        botonFoto.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                cargarImagen()
+            }
+        })
 
 
     }
@@ -95,6 +104,23 @@ class Registro : AppCompatActivity() {
     //ir al login
 
 }
+    fun cargarImagen() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/"
+        startActivityForResult(Intent.createChooser(intent, "Seleccione la aplicación"), 10)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val ImageView = findViewById<ImageView>(R.id.imageView)
+        if (resultCode == RESULT_OK) {
+            val path = data!!.data
+            ImageView.setImageURI(path)
+        }
+    }
+
+
+
     fun volverAlLogin(view: android.view.View) {
         val volverAlLogin= Intent(this, Login::class.java).apply {
         }

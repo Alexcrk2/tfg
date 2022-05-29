@@ -52,12 +52,12 @@ class Login : AppCompatActivity() {
                        //  supportFragmentManager.beginTransaction()
                        //      .replace(R.id.container, BlankFragment )
                        //      .commit()
-
-                         val irAlmenu = Intent(this, navigation::class.java).apply {
+                         //                                     aqui hay que volver a poner navigation
+                         val irAlmenu = Intent(this, menu::class.java).apply {
                          }
                          startActivity(irAlmenu)
-
-                         val intent = Intent(this, navigation::class.java)
+                         //                                     aqui hay que volver a poner navigation
+                         val intent = Intent(this, menu::class.java)
                          intent.putExtra("id", Stringemail)
                          startActivity(intent)
 

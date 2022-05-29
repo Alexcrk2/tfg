@@ -10,10 +10,22 @@
     tools:context=".Registro">
 
 
+    <ImageView
+
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/nodisponible"/>
+
+    <Button
+        android:id="@+id/agregarfoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar imagen" />
 
     <androidx.cardview.widget.CardView
 
-
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_marginStart="17dp"
         android:layout_marginEnd="17dp"
@@ -100,4 +112,5 @@
                 app:cornerRadius="20dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

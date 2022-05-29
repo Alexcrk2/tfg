@@ -1,5 +1,6 @@
 package com.example.tfg;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,12 +8,15 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -31,9 +35,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    ImageView ImageView;
     EditText buscar;
     ListView listView;
     Adapter adapter;
+
     SearchView searchView;
     public static ArrayList<Usuarios>usuariosArrayList=new ArrayList<>();
     String url="https://homoiothermal-dears.000webhostapp.com/phpFiles/list.php";
@@ -163,6 +169,19 @@ public class MainActivity extends AppCompatActivity {
     public void volver(View view) {
         startActivity(new Intent(getApplicationContext(),menu.class));
     }
+    public void cargarImagen(){
 
+        Intent intent= new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent,"Seleccione la aplicación"),10);
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK){
+            Uri path=data.getData();
+            ImageView.setImageURI(path);
+        }
+    }
 }
