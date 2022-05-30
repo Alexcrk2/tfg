@@ -53,11 +53,11 @@ class Login : AppCompatActivity() {
                        //      .replace(R.id.container, BlankFragment )
                        //      .commit()
                          //                                     aqui hay que volver a poner navigation
-                         val irAlmenu = Intent(this, menu::class.java).apply {
+                         val irAlmenu = Intent(this, navigation::class.java).apply {
                          }
                          startActivity(irAlmenu)
                          //                                     aqui hay que volver a poner navigation
-                         val intent = Intent(this, menu::class.java)
+                         val intent = Intent(this, navigation::class.java)
                          intent.putExtra("id", Stringemail)
                          startActivity(intent)
 
