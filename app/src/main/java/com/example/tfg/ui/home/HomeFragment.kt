@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
 
         //val texto = arguments!!.getString("key")
      //   val textofinal = texto.toString()
-
+//prueba comit
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
