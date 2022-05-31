@@ -18,6 +18,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        supportActionBar?.hide()
         val registerButton : Button = findViewById(R.id.buttonL1)
         registerButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -49,10 +50,6 @@ class Login : AppCompatActivity() {
                          password.setText("")
                          progressDialog.dismiss()
 
-                       //  supportFragmentManager.beginTransaction()
-                       //      .replace(R.id.container, BlankFragment )
-                       //      .commit()
-                         //                                     aqui hay que volver a poner navigation
                          val irAlmenu = Intent(this, navigation::class.java).apply {
                          }
                          startActivity(irAlmenu)

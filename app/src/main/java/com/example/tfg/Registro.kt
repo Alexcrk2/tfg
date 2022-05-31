@@ -21,6 +21,7 @@ class Registro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
+        supportActionBar?.hide()
 
         val registerButton : Button = findViewById(R.id.buttonR1)
         // val ImageView = findViewById<ImageView>(R.id.imageView)

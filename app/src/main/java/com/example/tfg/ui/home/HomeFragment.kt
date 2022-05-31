@@ -20,12 +20,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
 import androidx.annotation.NonNull
-
-
-
-
-
-
+import androidx.appcompat.app.AppCompatActivity
 
 
 class HomeFragment : Fragment() {
@@ -48,6 +43,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         //val texto = arguments!!.getString("key")
      //   val textofinal = texto.toString()

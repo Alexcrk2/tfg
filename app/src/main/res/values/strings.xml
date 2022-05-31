@@ -2,8 +2,8 @@
     <string name="app_name">tfg</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Perfil</string>
-    <string name="title_dashboard">Cartas</string>
-    <string name="title_notifications">Buscar</string>
+    <string name="title_dashboard">Buscar</string>
+    <string name="title_notifications">Cartas</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
