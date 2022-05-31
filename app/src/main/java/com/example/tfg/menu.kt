@@ -57,7 +57,7 @@ class menu : AppCompatActivity() {
         //val tvresultado = findViewById<TextView>(R.id.resultado)
         val datos = intent.extras!!
         val datosobtenidos = datos.getString("id")
-        val email =datosobtenidos.toString()
+        val emailEnviado =datosobtenidos.toString()
         val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/traerUser.php",
             Response.Listener { response ->//val jsonArray = JSONArray(response)
 
@@ -108,7 +108,7 @@ class menu : AppCompatActivity() {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
                 val params: MutableMap<String, String> = HashMap()
-                params["email"] = email
+                params["email"] = emailEnviado
 
                 return params
             }

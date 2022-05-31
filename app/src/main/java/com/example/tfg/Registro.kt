@@ -38,8 +38,23 @@ class Registro : AppCompatActivity() {
 
 
     }
+    fun cargarImagen() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.type = "image/"
+        startActivityForResult(Intent.createChooser(intent, "Seleccione la aplicación"), 10)
+    }
 
-     private fun registro() {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val ImageView = findViewById<ImageView>(R.id.imageView)
+        if (resultCode == RESULT_OK) {
+            val path = data!!.data
+            ImageView.setImageURI(path)
+        }
+    }
+
+     fun registro() {
+         val ImageView = findViewById<ImageView>(R.id.imageView)
          val nombre: EditText = findViewById(R.id.userRegistro)
          val email: EditText = findViewById(R.id.emailRegistro)
          val password: EditText = findViewById(R.id.passwordRegistro)
@@ -104,20 +119,7 @@ class Registro : AppCompatActivity() {
     //ir al login
 
 }
-    fun cargarImagen() {
-        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        intent.type = "image/"
-        startActivityForResult(Intent.createChooser(intent, "Seleccione la aplicación"), 10)
-    }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val ImageView = findViewById<ImageView>(R.id.imageView)
-        if (resultCode == RESULT_OK) {
-            val path = data!!.data
-            ImageView.setImageURI(path)
-        }
-    }
 
 
 

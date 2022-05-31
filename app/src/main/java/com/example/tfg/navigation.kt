@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.tfg.databinding.ActivityNavigationBinding
+import com.example.tfg.ui.home.HomeFragment
 
 class navigation : AppCompatActivity() {
 
@@ -15,6 +16,28 @@ class navigation : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        val bundle = intent.extras
+        val texto: String? = bundle?.getString("id")
+       //j val datos = intent.extras!!
+        // descomentar ??    val datosobtenidos = datos.getString("id")
+        //val email =datosobtenidos.toString()
+        val args = Bundle()
+       // args.putString("id", texto.toString());
+        val mFragment = HomeFragment()
+        mFragment.setArguments(args)
+
+
+        val mFragmentManager = supportFragmentManager
+        val mFragmentTransaction = mFragmentManager.beginTransaction()
+
+        //mFragmentTransaction.replace(R.id.navigation_home, mFragment); //donde fragmentContainer_id es el ID del FrameLayout donde tu Fragment está contenido.
+
+        mFragmentTransaction.addToBackStack(null)
+
+        mFragmentTransaction.commit();
+
 
         binding = ActivityNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -6,6 +6,7 @@
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/drawable/cuadrado.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.26614583333333336" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_agregar.xml" value="0.25" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_delete_data.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_detalles.xml" value="0.20878623188405798" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_editar.xml" value="0.20878623188405798" />
@@ -14,12 +15,12 @@
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_menu.xml" value="0.4" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_navigation.xml" value="0.2" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_pantalla2.xml" value="0.35661218424962854" />
-        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_registro.xml" value="0.264" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_registro.xml" value="0.4" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/content_main.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/fragment_blank.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
-        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/fragment_notifications.xml" value="0.1078125" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/list_usuarios.xml" value="0.2" />
         <entry key="..\:/Users/alexc/AndroidStudioProjects/tfg/app/src/main/res/layout/register.xml" value="0.1" />
