@@ -14,7 +14,7 @@ class splash : AppCompatActivity() {
         supportActionBar?.hide()
         music()
         Handler().postDelayed({
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, Registro::class.java)
             startActivity(intent)
             finish()
             music()

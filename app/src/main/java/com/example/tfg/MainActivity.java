@@ -10,11 +10,13 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -34,6 +36,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -184,6 +188,20 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode==RESULT_OK){
             Uri path=data.getData();
             ImageView.setImageURI(path);
+            try {
+                Bitmap bmp = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),path);
+                ImageView.setImageBitmap(bmp);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+    }
+    private String convertirImgString(Bitmap bitmap){
+        ByteArrayOutputStream array = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,array);
+        byte[] imageByte = array.toByteArray();
+        String imagenString = Base64.encodeToString(imageByte,Base64.DEFAULT);
+
+        return imagenString;
     }
 }

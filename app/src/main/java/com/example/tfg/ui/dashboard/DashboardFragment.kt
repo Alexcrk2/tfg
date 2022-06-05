@@ -156,6 +156,8 @@ class DashboardFragment : Fragment() {
                                     i0: Int,
                                     i2: Int
                                 ) {
+                                    adapter!!.filtrar(buscar!!.text.toString())
+                                    adapter!!.notifyDataSetChanged()
                                 }
 
                                 override fun onTextChanged(

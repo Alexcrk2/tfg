@@ -1,12 +1,14 @@
 package com.example.tfg.ui.home
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListView
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,7 +21,6 @@ import com.example.tfg.databinding.FragmentHomeBinding
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -54,7 +55,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //esto es lo que hay que quitar, hasta el parentesis
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.textViewEmail
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
@@ -62,7 +63,7 @@ class HomeFragment : Fragment() {
     }
     fun recogerYMostrar(texto : String){
 
-        val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/traerUser.php",
+        val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/fotoPerfil.php",
             Response.Listener { response ->//val jsonArray = JSONArray(response)
 
                 if (!response.isEmpty()) {
@@ -71,16 +72,27 @@ class HomeFragment : Fragment() {
                     val jsonArray = JSONArray(response)
                     //val jsonObject = jsonArray[0]
                     for(i in 0 until jsonArray.length()){
+                        var campoimagen = binding.root.findViewById<ImageView>(R.id.imageView)
+
                         val txvtid = binding.root.findViewById<TextView>(R.id.textViewID)
                         val txvuser = binding.root.findViewById<TextView>(R.id.textViewUser)
+                        val txvuser2 = binding.root.findViewById<TextView>(R.id.textViewUser2)
                         val txvemail = binding.root.findViewById<TextView>(R.id.textViewEmail)
                         val txvpass = binding.root.findViewById<TextView>(R.id.textViewPassword)
-                        val friend = binding.root.findViewById<TextView>(R.id.userfriend)
+                        val friend = binding.root.findViewById<TextView>(R.id.friend)
                         val jsonObject = JSONObject(jsonArray.getString(i))
                         var text1 = jsonObject.get("id")
-                        var text2 = jsonObject.get("user")
+                        var text2 = jsonObject.get("nombre")
                         var text3 = jsonObject.get("email")
                         var text4 = jsonObject.get("password")
+                        var image = jsonObject.get("foto")
+                        val image2 = image.toString()
+                        val bytecode: ByteArray = Base64.decode(image2, Base64.DEFAULT)
+                        var imagen2: Bitmap = BitmapFactory.decodeByteArray(bytecode, 0, bytecode.size)
+                        campoimagen.setImageBitmap(imagen2)
+
+
+
                         val id = text1.toString()
                         val user = text2.toString()
                         val email = text3.toString()
@@ -89,7 +101,7 @@ class HomeFragment : Fragment() {
                         txvuser.text = user
                         txvemail.text = email
                         txvpass.text = pass
-
+                        txvuser2.setText(user)
                         friend.setText("Tu ID para añadir amigos es: " + user +"#"+id)
 
 
@@ -117,7 +129,7 @@ class HomeFragment : Fragment() {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {
                 val params: MutableMap<String, String> = HashMap()
-                params["email"] = texto//emailEnviado
+                params["email"] = texto
 
                 return params
             }

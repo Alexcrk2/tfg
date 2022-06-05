@@ -43,9 +43,10 @@ class Login : AppCompatActivity() {
 
         }else {
              progressDialog.show()
-             val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
+             val request: StringRequest = object : StringRequest(Method.POST,
+                 "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
                  Response.Listener { response ->
-                     if (!response.isEmpty()) {
+                     if (response.equals("correcto", ignoreCase = true)) {
                          email.setText("")
                          password.setText("")
                          progressDialog.dismiss()
@@ -53,7 +54,7 @@ class Login : AppCompatActivity() {
                          val irAlmenu = Intent(this, navigation::class.java).apply {
                          }
                          startActivity(irAlmenu)
-                         //                                     aqui hay que volver a poner navigation
+
                          val intent = Intent(this, navigation::class.java)
                          intent.putExtra("id", Stringemail)
                          startActivity(intent)
@@ -63,8 +64,6 @@ class Login : AppCompatActivity() {
                          progressDialog.dismiss()
                          Toast.makeText(this, "No se pudo iniciar sesión", Toast.LENGTH_SHORT)
                              .show()
-
-
                      }
 
                  }, Response.ErrorListener { error ->

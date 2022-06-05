@@ -1,6 +1,5 @@
 package com.example.tfg
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +15,10 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import java.util.HashMap
+import android.graphics.Bitmap
+import android.util.Base64
+import java.io.ByteArrayOutputStream
+
 
 class Registro : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,6 +54,8 @@ class Registro : AppCompatActivity() {
         if (resultCode == RESULT_OK) {
             val path = data!!.data
             ImageView.setImageURI(path)
+            val bmp = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, path)
+            ImageView.setImageBitmap(bmp)
         }
     }
 
@@ -59,6 +64,18 @@ class Registro : AppCompatActivity() {
          val nombre: EditText = findViewById(R.id.userRegistro)
          val email: EditText = findViewById(R.id.emailRegistro)
          val password: EditText = findViewById(R.id.passwordRegistro)
+
+
+
+         //val imagenurl = ImageView.drawable
+         //val bmap: Bitmap = imagenurl.toBitmap()
+         //val bos = ByteArrayOutputStream()
+         //bmap.compress(Bitmap.CompressFormat.JPEG,100,bos)
+         //val bb = bos.toByteArray()
+         //val image: String = Base64.encodeToString(bb, Base64.DEFAULT)
+
+
+
 
          var Stringnombre = nombre.text.toString()
          var Stringemail = email.text.toString()
@@ -80,7 +97,7 @@ class Registro : AppCompatActivity() {
                  Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/registro.php",
                  Response.Listener { response ->
                      if (response.equals("registro realizado correctamente", ignoreCase = true)) {
-                         Toast.makeText(this@Registro, "Datos insertados", Toast.LENGTH_SHORT)
+                         Toast.makeText(this, "Datos insertados", Toast.LENGTH_SHORT)
                              .show()
                          progressDialog.dismiss()
                          val irAlLogin = Intent(this, Login::class.java).apply {
@@ -91,10 +108,7 @@ class Registro : AppCompatActivity() {
                          progressDialog.dismiss()
                          Toast.makeText(this, "Datos no insertardos", Toast.LENGTH_SHORT)
                              .show()
-
-
                      }
-
                  }, Response.ErrorListener { error ->
                      Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
                      progressDialog.dismiss()
@@ -102,11 +116,19 @@ class Registro : AppCompatActivity() {
                  @Throws(AuthFailureError::class)
                  override fun getParams(): Map<String, String>? {
                      val params: MutableMap<String, String> = HashMap()
-                     params["user"] = Stringnombre
+                     params["nombre"] = Stringnombre
                      params["email"] = Stringemail
                      params["password"] = Stringpass
-
+                     params["foto"] = //getStringImagen(bmp)
                      return params
+                 }
+
+                 private fun getStringImagen(bmp: Bitmap): String {
+                     val array = ByteArrayOutputStream()
+                     bmp.compress(Bitmap.CompressFormat.JPEG, 100, array)
+                     val imageByte = array.toByteArray()
+                     return Base64.encodeToString(imageByte, Base64.DEFAULT)
+
                  }
 
              }
@@ -120,8 +142,17 @@ class Registro : AppCompatActivity() {
     //ir al login
 
 }
+   // private fun convertirImgString(bitmap: Bitmap): String? {
 
-
+   //    }
+    fun getStringImagen(bmp: Bitmap): String {
+        val baos = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val imageBytes = baos.toByteArray()
+        if(Base64.encodeToString(imageBytes, Base64.DEFAULT) == null)
+            return ""
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT)
+    }
 
 
     fun volverAlLogin(view: android.view.View) {
@@ -129,4 +160,7 @@ class Registro : AppCompatActivity() {
         }
         startActivity(volverAlLogin)
     }
-     }
+
+
+
+}

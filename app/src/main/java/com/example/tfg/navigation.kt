@@ -16,7 +16,7 @@ class navigation : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //supportActionBar?.hide()
 
         val bundle = intent.extras
         val texto: String? = bundle?.getString("id")
