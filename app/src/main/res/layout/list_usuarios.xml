@@ -8,11 +8,11 @@
         android:id="@+id/txtid"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@drawable/cuadrado"
+        android:background="@drawable/gratball"
         android:gravity="center"
         android:text="1"
-        android:textColor="@color/white"
-        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
         android:textStyle="bold">
 
     </TextView>
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="Nombre"
-            android:textColor="@color/black"
+            android:textColor="@color/startblue"
             android:textSize="20dp">
 
 

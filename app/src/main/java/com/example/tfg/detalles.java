@@ -3,7 +3,9 @@ package com.example.tfg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.hardware.display.DisplayManager;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 public class detalles extends AppCompatActivity {
@@ -13,7 +15,12 @@ int position;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalles);
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
+        this.getWindow().setLayout((int)(width * .8), (int)(height * .7));
 
         tv1=findViewById(R.id.tid);
         tv2=findViewById(R.id.tuser);

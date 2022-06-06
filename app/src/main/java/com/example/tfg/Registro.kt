@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley
 import java.util.HashMap
 import android.graphics.Bitmap
 import android.util.Base64
+import androidx.core.graphics.drawable.toBitmap
 import java.io.ByteArrayOutputStream
 
 
@@ -67,12 +68,12 @@ class Registro : AppCompatActivity() {
 
 
 
-         //val imagenurl = ImageView.drawable
-         //val bmap: Bitmap = imagenurl.toBitmap()
-         //val bos = ByteArrayOutputStream()
-         //bmap.compress(Bitmap.CompressFormat.JPEG,100,bos)
-         //val bb = bos.toByteArray()
-         //val image: String = Base64.encodeToString(bb, Base64.DEFAULT)
+         val imagenurl = ImageView.drawable
+         val bmap: Bitmap = imagenurl.toBitmap()
+         val bos = ByteArrayOutputStream()
+         bmap.compress(Bitmap.CompressFormat.JPEG,100,bos)
+         val bb = bos.toByteArray()
+         val image: String = Base64.encodeToString(bb, Base64.DEFAULT)
 
 
 
@@ -119,7 +120,7 @@ class Registro : AppCompatActivity() {
                      params["nombre"] = Stringnombre
                      params["email"] = Stringemail
                      params["password"] = Stringpass
-                     params["foto"] = //getStringImagen(bmp)
+                     params["foto"] = image
                      return params
                  }
 
