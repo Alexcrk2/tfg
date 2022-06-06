@@ -55,50 +55,65 @@
 
             </RelativeLayout>
 
-            <EditText
-                android:id="@+id/emailRegistro"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:backgroundTint="#000"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/emailRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="#50AAD3"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/userRegistro"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:backgroundTint="#000"
-                android:ems="10"
-                android:hint="Usuario"
-                android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/userRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="#50AAD3"
+                    android:ems="10"
+                    android:hint="Usuario"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <EditText
-                android:id="@+id/passwordRegistro"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:backgroundTint="#000"
-                android:ems="10"
-                android:hint="contraseña"
-                android:inputType="textPersonName"
-                android:minHeight="48dp" />
+                app:passwordToggleEnabled="true">
+                <EditText
+                    android:background="#50AAD3"
+                    android:id="@+id/passwordRegistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/buttonR1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:backgroundTint="@color/startblue"
+                android:textColor="@color/black"
                 android:text="Confirmar registro"
                 app:cornerRadius="20dp" />
 
@@ -107,6 +122,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:backgroundTint="@color/startblue"
+                android:textColor="@color/black"
                 android:text="Volver al Login"
                 android:onClick="volverAlLogin"
                 app:cornerRadius="20dp" />
