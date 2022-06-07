@@ -77,40 +77,15 @@ class DashboardFragment : Fragment() {
         listView = binding.root.findViewById(R.id.listMostrar)
 
         listView!!.adapter = adapter
+        //este listView.setOnItemClickListener(new AdapterView.OnItemClickListener() permite que cuando le demos a un elemento de la lista invoca al popup
 
-
-        //este listView.setOnItemClickListener(new AdapterView.OnItemClickListener() permite que cuando le demos a un elemento de la lista pase algo
-
-
-        //este listView.setOnItemClickListener(new AdapterView.OnItemClickListener() permite que cuando le demos a un elemento de la lista pase algo
         listView!!.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
-                val builder = AlertDialog.Builder(view.context)
-                val progressDialog = ProgressDialog(view.context)
-                val dialogoItem =
-                    arrayOf<CharSequence>("Ver datos", "Editar datos", "Eliminar datos")
-                builder.setTitle(MainActivity.usuariosArrayList[position].nombre)
-                builder.setItems(
-                    dialogoItem
-                ) { dialog, i ->
-                    when (i) {
-                        0 -> startActivity(
-                            Intent(context
-                                ,
-                                detalles::class.java
-                            ).putExtra("position", position)
-                        )
-                        1 -> startActivity(
-                            Intent(
-                                context,
-                                editar::class.java
-                            ).putExtra("position", position)
-                        )
-                        2 -> {
-                        }
-                    }
-                }
-                builder.create().show()
+
+                MainActivity.usuariosArrayList[position].nombre
+                startActivity(Intent(context, detalles::class.java).putExtra("position", position)
+                )
+
             }
 
         ListarDatos(context)
