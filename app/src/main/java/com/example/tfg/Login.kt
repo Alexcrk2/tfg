@@ -44,7 +44,7 @@ class Login : AppCompatActivity() {
         }else {
              progressDialog.show()
              val request: StringRequest = object : StringRequest(Method.POST,
-                 "https://homoiothermal-dears.000webhostapp.com/phpFiles/login.php",
+                 "https://homoiothermal-dears.000webhostapp.com/phpFiles/login2.php",
                  Response.Listener { response ->
                      if (response.equals("correcto", ignoreCase = true)) {
                          email.setText("")

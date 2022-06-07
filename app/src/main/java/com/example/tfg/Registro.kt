@@ -43,6 +43,8 @@ class Registro : AppCompatActivity() {
 
 
     }
+
+
     fun cargarImagen() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         intent.type = "image/"
@@ -55,9 +57,14 @@ class Registro : AppCompatActivity() {
         if (resultCode == RESULT_OK) {
             val path = data!!.data
             ImageView.setImageURI(path)
-            val bmp = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, path)
-            ImageView.setImageBitmap(bmp)
+
         }
+    }
+    fun getStringImagen(bmp: Bitmap): String? {
+        val baos = ByteArrayOutputStream()
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        val imageBytes = baos.toByteArray()
+        return Base64.encodeToString(imageBytes, Base64.DEFAULT)
     }
 
      fun registro() {
@@ -66,16 +73,12 @@ class Registro : AppCompatActivity() {
          val email: EditText = findViewById(R.id.emailRegistro)
          val password: EditText = findViewById(R.id.passwordRegistro)
 
-
-
          val imagenurl = ImageView.drawable
          val bmap: Bitmap = imagenurl.toBitmap()
          val bos = ByteArrayOutputStream()
          bmap.compress(Bitmap.CompressFormat.JPEG,100,bos)
          val bb = bos.toByteArray()
          val image: String = Base64.encodeToString(bb, Base64.DEFAULT)
-
-
 
 
          var Stringnombre = nombre.text.toString()
@@ -95,7 +98,7 @@ class Registro : AppCompatActivity() {
          } else {
              progressDialog.show()
              val request: StringRequest = object : StringRequest(
-                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/registro.php",
+                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/registro2.php",
                  Response.Listener { response ->
                      if (response.equals("registro realizado correctamente", ignoreCase = true)) {
                          Toast.makeText(this, "Datos insertados", Toast.LENGTH_SHORT)
@@ -117,6 +120,7 @@ class Registro : AppCompatActivity() {
                  @Throws(AuthFailureError::class)
                  override fun getParams(): Map<String, String>? {
                      val params: MutableMap<String, String> = HashMap()
+
                      params["nombre"] = Stringnombre
                      params["email"] = Stringemail
                      params["password"] = Stringpass
@@ -124,13 +128,6 @@ class Registro : AppCompatActivity() {
                      return params
                  }
 
-                 private fun getStringImagen(bmp: Bitmap): String {
-                     val array = ByteArrayOutputStream()
-                     bmp.compress(Bitmap.CompressFormat.JPEG, 100, array)
-                     val imageByte = array.toByteArray()
-                     return Base64.encodeToString(imageByte, Base64.DEFAULT)
-
-                 }
 
              }
              val requestQueue = Volley.newRequestQueue(this)
@@ -140,21 +137,9 @@ class Registro : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         finish()
-    //ir al login
+
 
 }
-   // private fun convertirImgString(bitmap: Bitmap): String? {
-
-   //    }
-    fun getStringImagen(bmp: Bitmap): String {
-        val baos = ByteArrayOutputStream()
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos)
-        val imageBytes = baos.toByteArray()
-        if(Base64.encodeToString(imageBytes, Base64.DEFAULT) == null)
-            return ""
-        return Base64.encodeToString(imageBytes, Base64.DEFAULT)
-    }
-
 
     fun volverAlLogin(view: android.view.View) {
         val volverAlLogin= Intent(this, Login::class.java).apply {

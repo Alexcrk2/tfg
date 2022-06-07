@@ -35,4 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="password" />
+
+    <ImageView
+        android:id="@+id/timage"
+        android:layout_marginTop="50dp"
+        android:layout_width="173dp"
+        android:layout_gravity="center"
+        android:layout_height="161dp"
+        android:src="@drawable/nodisponible" />
 </LinearLayout>

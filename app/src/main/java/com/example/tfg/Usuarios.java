@@ -9,17 +9,18 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class Usuarios {
-    String id, user, email, password;
+    String id, nombre, email, password, foto;
     List<String> favoritos;
 
     public Usuarios() {
     }
 
-    public Usuarios(String id, String user, String email, String password) {
+    public Usuarios(String id, String nombre, String email, String password, String foto) {
         this.id = id;
-        this.user = user;
+        this.nombre = nombre;
         this.email = email;
         this.password = password;
+        this.foto = foto;
         this.favoritos = new List<String>() {
             @Override
             public int size() {
@@ -154,6 +155,14 @@ public class Usuarios {
         };
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     public String getId() {
         return id;
     }
@@ -162,12 +171,12 @@ public class Usuarios {
         this.id = id;
     }
 
-    public String getUser() {
-        return user;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getEmail() {

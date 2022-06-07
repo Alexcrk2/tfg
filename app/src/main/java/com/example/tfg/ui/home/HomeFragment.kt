@@ -22,6 +22,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
 import androidx.appcompat.app.AppCompatActivity
+import com.squareup.picasso.Picasso
 
 
 class HomeFragment : Fragment() {
@@ -47,7 +48,7 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
 
         //val texto = arguments!!.getString("key")
-     //   val textofinal = texto.toString()
+        //   val textofinal = texto.toString()
 //prueba comit
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
@@ -63,7 +64,7 @@ class HomeFragment : Fragment() {
     }
     fun recogerYMostrar(texto : String){
 
-        val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/fotoPerfil.php",
+        val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/fotoPerfil2.php",
             Response.Listener { response ->//val jsonArray = JSONArray(response)
 
                 if (!response.isEmpty()) {
@@ -85,11 +86,11 @@ class HomeFragment : Fragment() {
                         var text2 = jsonObject.get("nombre")
                         var text3 = jsonObject.get("email")
                         var text4 = jsonObject.get("password")
-                        var image = jsonObject.get("foto")
-                        val image2 = image.toString()
-                        val bytecode: ByteArray = Base64.decode(image2, Base64.DEFAULT)
-                        var imagen2: Bitmap = BitmapFactory.decodeByteArray(bytecode, 0, bytecode.size)
-                        campoimagen.setImageBitmap(imagen2)
+                        var text5 = jsonObject.get("foto")
+                        // val image2 = image.toString()
+                        //  val bytecode: ByteArray = Base64.decode(image2, Base64.DEFAULT)
+                        //   var imagen2: Bitmap = BitmapFactory.decodeByteArray(bytecode, 0, bytecode.size)
+                        //   campoimagen.setImageBitmap(imagen2)
 
 
 
@@ -97,6 +98,8 @@ class HomeFragment : Fragment() {
                         val user = text2.toString()
                         val email = text3.toString()
                         val pass = text4.toString()
+                        val foto = text5.toString()
+                        Picasso.get().load(foto).into(campoimagen)
                         txvtid.text = id
                         txvuser.text = user
                         txvemail.text = email
@@ -109,21 +112,21 @@ class HomeFragment : Fragment() {
 
                     }
 
-                  //  Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT)
-                   //     .show()
+                    //  Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT)
+                    //     .show()
 
 
 
                 } else {
 
                     //Toast.makeText(this, "No se pudo cargar los datos del usuario ", Toast.LENGTH_SHORT)
-                   //     .show()
+                    //     .show()
 
 
                 }
 
             }, Response.ErrorListener { error ->
-               // Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
+                // Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
 
             }) {
             @Throws(AuthFailureError::class)

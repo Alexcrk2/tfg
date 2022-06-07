@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 CharSequence[] dialogoItem ={"Ver datos", "Editar datos", "Eliminar datos"};
-                builder.setTitle(usuariosArrayList.get(position).getUser());
+                builder.setTitle(usuariosArrayList.get(position).getNombre());
                 builder.setItems(dialogoItem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                             String user = object.getString("user");
                             String email = object.getString("email");
                             String password = object.getString("password");
-                            usuarios = new Usuarios(id, user, email, password);
+                            usuarios = new Usuarios(id, user, email, password, usuarios.foto);
                             usuariosArrayList.add(usuarios);
 
 

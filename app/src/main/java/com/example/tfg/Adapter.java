@@ -34,7 +34,7 @@ public class Adapter extends ArrayAdapter<Usuarios> {
         TextView txtNombre = view.findViewById(R.id.txtnombre);
 
         txtID.setText(arrayusuarios.get(position).getId());
-        txtNombre.setText(arrayusuarios.get(position).getUser());
+        txtNombre.setText(arrayusuarios.get(position).getNombre());
 
         return view;
     }
@@ -54,7 +54,7 @@ public class Adapter extends ArrayAdapter<Usuarios> {
             // elementos del adaptador.
             for (Usuarios usuarios : copia) {
 
-                if (usuarios.getUser().contains(texto)) {
+                if (usuarios.getNombre().contains(texto)) {
                     arrayusuarios.add(usuarios);
                 }
             }

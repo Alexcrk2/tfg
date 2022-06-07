@@ -44,7 +44,7 @@ class DashboardFragment : Fragment() {
     var adapter: Adapter? = null
     var searchView: SearchView? = null
     var usuariosArrayList = ArrayList<Usuarios>()
-    var url = "https://homoiothermal-dears.000webhostapp.com/phpFiles/list.php"
+    var url = "https://homoiothermal-dears.000webhostapp.com/phpFiles/list2.php"
     var usuarios: Usuarios? = null
 
 
@@ -89,7 +89,7 @@ class DashboardFragment : Fragment() {
                 val progressDialog = ProgressDialog(view.context)
                 val dialogoItem =
                     arrayOf<CharSequence>("Ver datos", "Editar datos", "Eliminar datos")
-                builder.setTitle(MainActivity.usuariosArrayList[position].user)
+                builder.setTitle(MainActivity.usuariosArrayList[position].nombre)
                 builder.setItems(
                     dialogoItem
                 ) { dialog, i ->
@@ -139,10 +139,11 @@ class DashboardFragment : Fragment() {
                             for (i in 0 until jsonArray.length()) {
                                 val `object` = jsonArray.getJSONObject(i)
                                 val id = `object`.getString("id")
-                                val user = `object`.getString("user")
+                                val nombre = `object`.getString("nombre")
                                 val email = `object`.getString("email")
                                 val password = `object`.getString("password")
-                                usuarios = Usuarios(id, user, email, password)
+                                val foto = `object`.getString("foto")
+                                usuarios = Usuarios(id, nombre, email, password, foto)
                                 MainActivity.usuariosArrayList.add(usuarios)
                             }
                             adapter = Adapter(context, MainActivity.usuariosArrayList)
