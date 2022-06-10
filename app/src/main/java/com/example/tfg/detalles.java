@@ -47,7 +47,6 @@ public class detalles extends AppCompatActivity {
         idextra=intent.getStringExtra("id");
         emailextra=intent.getStringExtra("email");
         userextra=intent.getStringExtra("user");
-
         imagenextra=intent.getStringExtra("foto");
 
 

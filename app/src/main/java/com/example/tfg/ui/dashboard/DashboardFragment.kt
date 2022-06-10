@@ -85,9 +85,9 @@ class DashboardFragment : Fragment() {
                 usuariosArrayList[position].nombre
 
                 val idextra = usuariosArrayList[position].id
-                val emailextra= usuariosArrayList[position].id
-                val userextra= usuariosArrayList[position].id
-                val fotoextra = usuariosArrayList[position].id
+                val emailextra= usuariosArrayList[position].email
+                val userextra= usuariosArrayList[position].nombre
+                val fotoextra = usuariosArrayList[position].foto
 
                 startActivity(Intent(context, detalles::class.java).putExtra("position", position)
                     .putExtra("id", idextra)
