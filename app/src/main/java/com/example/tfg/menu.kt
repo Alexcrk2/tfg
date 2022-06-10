@@ -72,7 +72,7 @@ class menu : AppCompatActivity() {
         recogerYMostrar()
     }
     fun AM(view: android.view.View) {
-        val AM= Intent(this, MainActivity::class.java).apply {
+        val AM= Intent(this, Login::class.java).apply {
         }
         startActivity(AM)
     }

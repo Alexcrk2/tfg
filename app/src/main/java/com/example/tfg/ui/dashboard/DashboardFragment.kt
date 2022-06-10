@@ -65,7 +65,7 @@ class DashboardFragment : Fragment() {
 
 
         if(context != null){
-            adapter = Adapter(context, MainActivity.usuariosArrayList)
+            adapter = Adapter(context,usuariosArrayList)
 
             ListarDatos(context)
         }
@@ -82,8 +82,21 @@ class DashboardFragment : Fragment() {
         listView!!.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
 
-                MainActivity.usuariosArrayList[position].nombre
+                usuariosArrayList[position].nombre
+
+                val idextra = usuariosArrayList[position].id
+                val emailextra= usuariosArrayList[position].email
+                val userextra= usuariosArrayList[position].nombre
+                val fotoextra = usuariosArrayList[position].foto
+
                 startActivity(Intent(context, detalles::class.java).putExtra("position", position)
+                    .putExtra("id", idextra)
+                    .putExtra("user", userextra)
+                    .putExtra("email", emailextra)
+                    .putExtra("foto", fotoextra)
+
+
+
                 )
 
             }
@@ -104,7 +117,7 @@ class DashboardFragment : Fragment() {
         val request = StringRequest(
             Request.Method.POST, url,
             { response ->
-                MainActivity.usuariosArrayList.clear()
+                usuariosArrayList.clear()
                 try {
                     if(context != null){
                         val jsonObject = JSONObject(response)
@@ -119,9 +132,9 @@ class DashboardFragment : Fragment() {
                                 val password = `object`.getString("password")
                                 val foto = `object`.getString("foto")
                                 usuarios = Usuarios(id, nombre, email, password, foto)
-                                MainActivity.usuariosArrayList.add(usuarios)
+                                usuariosArrayList.add(usuarios!!)
                             }
-                            adapter = Adapter(context, MainActivity.usuariosArrayList)
+                            adapter = Adapter(context, usuariosArrayList)
 
                             //la busqueda de mierda, ver.
                             buscar = binding.root.findViewById<EditText>(R.id.buscar)

@@ -11,10 +11,18 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+
 public class detalles extends AppCompatActivity {
     TextView tv1, tv2, tv3, tv4, tv5;
     ImageView im1;
     int position;
+    String idextra;
+    String emailextra;
+    String userextra;
+    String passextra;
+    String imagenextra;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +44,19 @@ public class detalles extends AppCompatActivity {
         Intent intent=getIntent();
         position = intent.getExtras().getInt("position");
 
-        tv1.setText(MainActivity.usuariosArrayList.get(position).getId());
-        tv2.setText(MainActivity.usuariosArrayList.get(position).getNombre());
-        tv3.setText(MainActivity.usuariosArrayList.get(position).getEmail());
-        tv4.setText("Añadir amigo " + MainActivity.usuariosArrayList.get(position).getNombre()+"#"+MainActivity.usuariosArrayList.get(position).getId());
-        tv5.setText(MainActivity.usuariosArrayList.get(position).getNombre());
-        Picasso.get().load(MainActivity.usuariosArrayList.get(position).getFoto()).into(im1);
+        idextra=intent.getStringExtra("id");
+        emailextra=intent.getStringExtra("email");
+        userextra=intent.getStringExtra("user");
+        imagenextra=intent.getStringExtra("foto");
+
+
+
+        tv1.setText(idextra);
+        tv2.setText(userextra);
+        tv3.setText(emailextra);
+        tv4.setText("Añadir amigo " + userextra +"#"+idextra);
+        tv5.setText(userextra);
+        Picasso.get().load(imagenextra).into(im1);
 
     }
 }
