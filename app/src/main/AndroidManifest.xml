@@ -35,9 +35,6 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="true" />
-        <activity
             android:name=".menu"
             android:exported="true" />
         <activity
