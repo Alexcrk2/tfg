@@ -8,7 +8,8 @@
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-22dp">
+    tools:layout_editor_absoluteY="-22dp"
+    >
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
