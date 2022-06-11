@@ -1,5 +1,6 @@
 package com.example.tfg.ui.home
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -22,6 +24,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
 import androidx.appcompat.app.AppCompatActivity
+import com.example.tfg.Login
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
 
 
@@ -60,8 +64,16 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val logoutButton : FloatingActionButton = binding.root.findViewById(R.id.botonlogout)
+        logoutButton.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                val intent = Intent(activity, Login::class.java)
+                activity!!.startActivity(intent)
+            }
+        })
         return root
     }
+
     fun recogerYMostrar(texto : String){
 
         val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/fotoPerfil2.php",
@@ -169,5 +181,6 @@ class HomeFragment : Fragment() {
         if (texto != null) {
             recogerYMostrar(texto)
         }
+
     }
 }
