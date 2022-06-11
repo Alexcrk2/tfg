@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -69,6 +70,8 @@ class HomeFragment : Fragment() {
             override fun onClick(v: View?) {
                 val intent = Intent(activity, Login::class.java)
                 activity!!.startActivity(intent)
+                Toast.makeText(this@HomeFragment.requireActivity(), "Has cerrado sesión", Toast.LENGTH_SHORT).show()
+
             }
         })
         return root
@@ -76,7 +79,7 @@ class HomeFragment : Fragment() {
 
     fun recogerYMostrar(texto : String){
 
-        val request: StringRequest = object : StringRequest(Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/fotoPerfil2.php",
+        val request: StringRequest = object : StringRequest(Method.POST, "https://dianoetic-adhesives.000webhostapp.com/phpFiles/fotoPerfil2.php",
             Response.Listener { response ->//val jsonArray = JSONArray(response)
 
                 if (!response.isEmpty()) {
@@ -123,7 +126,7 @@ class HomeFragment : Fragment() {
 
 
                     }
-
+                    Toast.makeText(this@HomeFragment.requireActivity(), "datos cargados", Toast.LENGTH_SHORT).show()
                     //  Toast.makeText(this, "Datos del usuario cargados", Toast.LENGTH_SHORT)
                     //     .show()
 
@@ -133,13 +136,13 @@ class HomeFragment : Fragment() {
 
                     //Toast.makeText(this, "No se pudo cargar los datos del usuario ", Toast.LENGTH_SHORT)
                     //     .show()
-
+                    Toast.makeText(this@HomeFragment.requireActivity(), "no se pudieron cargar los datos", Toast.LENGTH_SHORT).show()
 
                 }
 
             }, Response.ErrorListener { error ->
                 // Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
-
+                Toast.makeText(this@HomeFragment.requireActivity(), "tiempo de respuesta excecido", Toast.LENGTH_SHORT).show()
             }) {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String>? {

@@ -25,7 +25,7 @@ class NotificationsFragment : Fragment() {
     var carta: Cartas? = null
     var adapterCarta: AdapterCarta? = null
     private val URL_cartas =
-        "https://homoiothermal-dears.000webhostapp.com/phpFiles/traerCartas.php"
+        "https://dianoetic-adhesives.000webhostapp.com/phpFiles/traerCartas.php"
     private lateinit var notificationsViewModel: NotificationsViewModel
     private var _binding: FragmentNotificationsBinding? = null
 

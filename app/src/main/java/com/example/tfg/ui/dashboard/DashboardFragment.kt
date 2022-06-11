@@ -44,7 +44,7 @@ class DashboardFragment : Fragment() {
     var adapter: Adapter? = null
     var searchView: SearchView? = null
     var usuariosArrayList = ArrayList<Usuarios>()
-    var url = "https://homoiothermal-dears.000webhostapp.com/phpFiles/list2.php"
+    var url = "https://dianoetic-adhesives.000webhostapp.com/phpFiles/list2.php"
     var usuarios: Usuarios? = null
 
 

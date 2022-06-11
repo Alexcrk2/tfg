@@ -32,7 +32,7 @@ public class detalles extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        this.getWindow().setLayout((int)(width * .6), (int)(height * .5));
+        this.getWindow().setLayout((int)(width * .8), (int)(height * .7));
 
         tv1=findViewById(R.id.tid);
         tv2=findViewById(R.id.tnombre);

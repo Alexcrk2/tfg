@@ -98,7 +98,7 @@ class Registro : AppCompatActivity() {
          } else {
              progressDialog.show()
              val request: StringRequest = object : StringRequest(
-                 Method.POST, "https://homoiothermal-dears.000webhostapp.com/phpFiles/registro2.php",
+                 Method.POST, "https://dianoetic-adhesives.000webhostapp.com/phpFiles/registro2.php",
                  Response.Listener { response ->
                      if (response.equals("registro realizado correctamente", ignoreCase = true)) {
                          Toast.makeText(this, "Datos insertados", Toast.LENGTH_SHORT)
