@@ -31,11 +31,11 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/botonlogout"
-                android:layout_gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:clickable="true"
-                android:src="@drawable/gratball" />
+                android:src="@android:drawable/ic_lock_power_off" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -227,7 +227,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
-            android:text="email" />
+            android:text="email... cargando..." />
     </LinearLayout>
 
     <LinearLayout

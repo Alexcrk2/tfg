@@ -16,7 +16,6 @@ import java.lang.reflect.Array;
 public class detalles extends AppCompatActivity {
     TextView tv1, tv2, tv3, tv4, tv5;
     ImageView im1;
-    int position;
     String idextra;
     String emailextra;
     String userextra;
@@ -31,7 +30,6 @@ public class detalles extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
         this.getWindow().setLayout((int)(width * .8), (int)(height * .7));
 
         tv1=findViewById(R.id.tid);
@@ -42,8 +40,6 @@ public class detalles extends AppCompatActivity {
         im1=findViewById(R.id.timage);
 
         Intent intent=getIntent();
-        position = intent.getExtras().getInt("position");
-
         idextra=intent.getStringExtra("id");
         emailextra=intent.getStringExtra("email");
         userextra=intent.getStringExtra("user");

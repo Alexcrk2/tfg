@@ -32,10 +32,8 @@ public class Adapter extends ArrayAdapter<Usuarios> {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_usuarios, null, true);
         TextView txtID = view.findViewById(R.id.txtid);
         TextView txtNombre = view.findViewById(R.id.txtnombre);
-
         txtID.setText(arrayusuarios.get(position).getId());
         txtNombre.setText(arrayusuarios.get(position).getNombre());
-
         return view;
     }
 

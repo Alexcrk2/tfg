@@ -3,6 +3,7 @@ package com.example.tfg
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -27,7 +28,6 @@ class navigation : AppCompatActivity() {
        // args.putString("id", texto.toString());
         val mFragment = HomeFragment()
         mFragment.setArguments(args)
-
 
         val mFragmentManager = supportFragmentManager
         val mFragmentTransaction = mFragmentManager.beginTransaction()

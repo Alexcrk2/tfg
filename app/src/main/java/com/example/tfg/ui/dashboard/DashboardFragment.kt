@@ -14,6 +14,7 @@ import android.widget.*
 import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -44,7 +45,7 @@ class DashboardFragment : Fragment() {
     var adapter: Adapter? = null
     var searchView: SearchView? = null
     var usuariosArrayList = ArrayList<Usuarios>()
-    var url = "https://dianoetic-adhesives.000webhostapp.com/phpFiles/list2.php"
+    var url = "https://dianoetic-adhesives.000webhostapp.com/phpFiles/list.php"
     var usuarios: Usuarios? = null
 
 
@@ -53,8 +54,10 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
         val context: Context? = activity
+
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
@@ -89,8 +92,7 @@ class DashboardFragment : Fragment() {
                 val userextra= usuariosArrayList[position].nombre
                 val fotoextra = usuariosArrayList[position].foto
 
-                startActivity(Intent(context, detalles::class.java).putExtra("position", position)
-                    .putExtra("id", idextra)
+                startActivity(Intent(context, detalles::class.java).putExtra("id", idextra)
                     .putExtra("user", userextra)
                     .putExtra("email", emailextra)
                     .putExtra("foto", fotoextra)
@@ -114,9 +116,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun ListarDatos(context: Context?) {
-        val request = StringRequest(
-            Request.Method.POST, url,
-            { response ->
+        val request = StringRequest(Request.Method.POST, url, { response ->
                 usuariosArrayList.clear()
                 try {
                     if(context != null){
@@ -136,7 +136,7 @@ class DashboardFragment : Fragment() {
                             }
                             adapter = Adapter(context, usuariosArrayList)
 
-                            //la busqueda de mierda, ver.
+
                             buscar = binding.root.findViewById<EditText>(R.id.buscar)
                             buscar!!.addTextChangedListener(object : TextWatcher {
                                 override fun beforeTextChanged(

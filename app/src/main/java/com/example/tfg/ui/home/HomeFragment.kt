@@ -25,6 +25,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.tfg.Login
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.squareup.picasso.Picasso
@@ -68,6 +69,7 @@ class HomeFragment : Fragment() {
         val logoutButton : FloatingActionButton = binding.root.findViewById(R.id.botonlogout)
         logoutButton.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 val intent = Intent(activity, Login::class.java)
                 activity!!.startActivity(intent)
                 Toast.makeText(this@HomeFragment.requireActivity(), "Has cerrado sesión", Toast.LENGTH_SHORT).show()
@@ -79,7 +81,7 @@ class HomeFragment : Fragment() {
 
     fun recogerYMostrar(texto : String){
 
-        val request: StringRequest = object : StringRequest(Method.POST, "https://dianoetic-adhesives.000webhostapp.com/phpFiles/fotoPerfil2.php",
+        val request: StringRequest = object : StringRequest(Method.POST, "https://dianoetic-adhesives.000webhostapp.com/phpFiles/traerUser.php",
             Response.Listener { response ->//val jsonArray = JSONArray(response)
 
                 if (!response.isEmpty()) {
@@ -171,13 +173,7 @@ class HomeFragment : Fragment() {
             return
 
 */
-        val data = this.arguments
-        if (data != null) {
-            val string2 = data.getString("id")
-            if (string2 != null) {
-                recogerYMostrar(string2)
-            }
-        }
+
 
         val bundle = activity?.intent?.extras
         val texto: String? = bundle?.getString("id")
