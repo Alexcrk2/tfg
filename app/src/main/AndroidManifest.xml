@@ -19,27 +19,23 @@
         <activity
             android:name=".navigation"
             android:exported="true"
-            android:label="@string/title_activity_navigation" />
+            android:label="@string/title_activity_navigation"
+            android:screenOrientation="portrait"/>
         
         <activity
             android:name=".detalles"
             android:exported="true"
-            android:theme="@style/Theme.Tfg.PopUp"/>
-        <activity
-            android:name=".editar"
-            android:exported="true" />
-        <activity
-            android:name=".agregar"
-            android:exported="true" />
-        <activity
-            android:name=".menu"
-            android:exported="true" />
+            android:theme="@style/Theme.Tfg.PopUp"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".Registro"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Login"
-            android:exported="true" />
+            android:exported="true"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".splash"
             android:exported="true">
